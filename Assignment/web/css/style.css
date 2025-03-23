@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-size: 16px; /* Giảm từ 18px xuống 16px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container, .container {
+    width: 90%; /* Giảm từ 95% xuống 90% */
+    max-width: 1000px; /* Giảm từ 1200px xuống 1000px */
+    background: white;
+    padding: 30px; /* Giảm từ 40px xuống 30px */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Giảm bóng từ 15px xuống 10px */
+    border-radius: 10px; /* Giảm từ 12px xuống 10px */
+}
+
+h2, h3 {
+    color: #333;
+    font-size: 24px; /* Giảm từ 28px xuống 24px */
+    margin: 15px 0; /* Giảm từ 20px xuống 15px */
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 16px; /* Giảm từ 18px xuống 16px */
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"], input[type="date"], textarea {
+    width: 100%;
+    padding: 8px; /* Giảm từ 10px xuống 8px */
+    margin-bottom: 10px; /* Giảm từ 12px xuống 10px */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Giảm từ 6px xuống 5px */
+    font-size: 16px; /* Giảm từ 18px xuống 16px */
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px; /* Giảm từ 12px 25px xuống 10px 20px */
+    border: none;
+    border-radius: 5px; /* Giảm từ 6px xuống 5px */
+    cursor: pointer;
+    font-size: 16px; /* Giảm từ 18px xuống 16px */
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: red;
+    font-size: 14px; /* Giảm từ 16px xuống 14px */
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px; /* Giảm từ 40px xuống 30px */
+}
+
+th, td {
+    padding: 15px; /* Giảm từ 20px xuống 15px */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px; /* Giảm từ 16px xuống 15px */
+    line-height: 1.6; /* Giảm từ 1.8 xuống 1.6 */
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.approve-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px; /* Giảm từ 10px 20px xuống 8px 15px */
+    border: none;
+    border-radius: 5px; /* Giảm từ 6px xuống 5px */
+    cursor: pointer;
+    font-size: 14px; /* Giảm từ 16px xuống 14px */
+    text-decoration: none;
+    display: inline-block;
+}
+
+.reject-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 15px; /* Giảm từ 10px 20px xuống 8px 15px */
+    border: none;
+    border-radius: 5px; /* Giảm từ 6px xuống 5px */
+    cursor: pointer;
+    font-size: 14px; /* Giảm từ 16px xuống 14px */
+    text-decoration: none;
+    display: inline-block;
+}
+
+.agenda-btn {
+    display: inline-block;
+    margin-top: 30px; /* Giảm từ 40px xuống 30px */
+    padding: 12px 25px; /* Giảm từ 15px 30px xuống 12px 25px */
+    background-color: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px; /* Giảm từ 6px xuống 5px */
+    font-size: 15px; /* Giảm từ 16px xuống 15px */
+}
+
+.green {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.red {
+    background-color: #f44336;
+    color: white;
+}
