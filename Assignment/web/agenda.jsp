@@ -1,50 +1,76 @@
-<%-- 
-    Document   : agenda
-    Created on : Mar 23, 2025
-    Author     : Grok 3 (xAI)
---%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, java.util.Map" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.YearMonth" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Agenda</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Agenda - Leave Management</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .on-leave {
+            background-color: #ffcccc;
+        }
+        .working {
+            background-color: #ccffcc;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Agenda - Lịch làm việc</h2>
-        <table>
+    <h2>Agenda - Leave Calendar</h2>
+
+    <!-- Form để chọn tháng và năm -->
+    <form method="get" action="agenda">
+        <label for="month">Month:</label>
+        <select name="month" id="month">
+            <c:forEach var="i" begin="1" end="12">
+                <option value="${i}" ${i == yearMonth.monthValue ? 'selected' : ''}>${i}</option>
+            </c:forEach>
+        </select>
+        <label for="year">Year:</label>
+        <select name="year" id="year">
+            <c:forEach var="i" begin="2020" end="2030">
+                <option value="${i}" ${i == yearMonth.year ? 'selected' : ''}>${i}</option>
+            </c:forEach>
+        </select>
+        <button type="submit">View Calendar</button>
+    </form>
+
+    <h3>Calendar for ${yearMonth.month} ${yearMonth.year}</h3>
+
+    <!-- Bảng lịch -->
+    <table>
+        <thead>
             <tr>
-                <th>Nhân viên</th>
-                <th>Ngày</th>
-                <th>Trạng thái</th>
+                <th>Employee</th>
+                <c:set var="currentDate" value="${startDate}"/>
+                <c:forEach begin="0" end="${endDate.dayOfMonth - 1}">
+                    <th>${currentDate.dayOfMonth}</th>
+                    <c:set var="currentDate" value="${currentDate.plusDays(1)}"/>
+                </c:forEach>
             </tr>
-            <% 
-                List<Map<String, Object>> agendaData = (List<Map<String, Object>>) request.getAttribute("agendaData");
-                if (agendaData != null && !agendaData.isEmpty()) {
-                    for (Map<String, Object> entry : agendaData) {
-                        String status = (String) entry.get("status");
-                        String statusClass = status.equals("Nghỉ") ? "red" : "green";
-            %>
+        </thead>
+        <tbody>
+            <c:forEach var="employeeData" items="${calendarData}">
                 <tr>
-                    <td><%= entry.get("employee") %></td>
-                    <td><%= entry.get("date") %></td>
-                    <td class="<%= statusClass %>"><%= status %></td>
+                    <td>${employeeData.employee}</td>
+                    <c:forEach var="status" items="${employeeData.dailyStatus}">
+                        <td class="${status == 'Nghỉ' ? 'on-leave' : 'working'}">${status}</td>
+                    </c:forEach>
                 </tr>
-            <% 
-                    }
-                } else {
-            %>
-                <tr>
-                    <td colspan="3">Không có dữ liệu lịch làm việc.</td>
-                </tr>
-            <% 
-                }
-            %>
-        </table>
-        <a href="leave_list" class="agenda-btn">Quay lại danh sách</a>
-    </div>
+            </c:forEach>
+        </tbody>
+    </table>
 </body>
 </html>
